@@ -23,3 +23,4 @@ tsconfig.tsbuildinfo
 wrangler.json
 website.config.json
 bun.lock
+.website-template/
