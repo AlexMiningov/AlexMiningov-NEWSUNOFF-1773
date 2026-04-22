@@ -1,0 +1,25 @@
+# deps
+node_modules/
+
+# next
+.next/
+out/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# vercel
+.vercel
+
+# prisma
+prisma/migrations/
+
+# misc
+.DS_Store
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+wrangler.json
+website.config.json
+bun.lock
