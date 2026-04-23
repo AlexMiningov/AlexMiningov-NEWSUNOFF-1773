@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare, Loader2, CheckCircle } from 'lucide-react'
-import { toast } from 'sonner'
+const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID'
 
 export function ContactSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -24,27 +24,30 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e?.preventDefault?.()
     if (!form?.name || !form?.phone || !form?.message) {
-      toast.error('Пожалуйста, заполните обязательные поля')
+      alert('Пожалуйста, заполните обязательные поля')
       return
     }
     setLoading(true)
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(FORMSPREE_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          Имя: form.name,
+          Телефон: form.phone,
+          Email: form.email,
+          Сообщение: form.message,
+          _subject: `Новое сообщение от ${form.name}`,
+        }),
       })
-      const data = await res?.json()
-      if (data?.success) {
+      if (res.ok) {
         setSuccess(true)
         setForm({ name: '', phone: '', email: '', message: '' })
-        toast.success('Сообщение отправлено!')
       } else {
-        toast.error(data?.message ?? 'Ошибка отправки')
+        alert('Ошибка отправки. Позвоните нам: +375 29 888-89-55')
       }
-    } catch (err: any) {
-      console.error('Contact error:', err)
-      toast.error('Произошла ошибка. Попробуйте позже.')
+    } catch {
+      alert('Ошибка сети. Позвоните нам: +375 29 888-89-55')
     } finally {
       setLoading(false)
     }
@@ -66,11 +69,11 @@ export function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="grad-text font-semibold text-sm uppercase tracking-widest mb-3">
             Контакты
           </p>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Свяжитесь <span className="text-primary">с нами</span>
+            Свяжитесь <span className="grad-text">с нами</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Остались вопросы? Напишите нам или позвоните — мы всегда на связи.
@@ -87,13 +90,13 @@ export function ContactSection() {
           >
             {contactInfo?.map((item: any, i: number) => (
               <div key={i} className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0">
-                  <item.icon className="w-5 h-5 text-primary" />
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/15 to-violet-600/15 flex items-center justify-center flex-shrink-0">
+                  <item.icon className="w-5 h-5 text-orange-400" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">{item?.label}</p>
                   {item?.href ? (
-                    <a href={item?.href} className="text-foreground font-medium hover:text-primary transition-colors">
+                    <a href={item?.href} className="text-foreground font-medium hover:text-orange-400 transition-colors">
                       {item?.value}
                     </a>
                   ) : (
@@ -126,12 +129,12 @@ export function ContactSection() {
           >
             {success ? (
               <div className="bg-card border border-border rounded-2xl p-8 text-center h-full flex flex-col items-center justify-center">
-                <CheckCircle className="w-16 h-16 text-primary mb-4" />
+                <CheckCircle className="w-16 h-16 text-orange-400 mb-4" />
                 <h3 className="font-display text-2xl font-bold mb-2">Сообщение отправлено!</h3>
                 <p className="text-muted-foreground mb-6">Мы ответим вам в ближайшее время.</p>
                 <button
                   onClick={() => setSuccess(false)}
-                  className="bg-primary text-primary-foreground px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all"
+                  className="grad-bg text-white px-6 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition-all"
                 >
                   Написать ещё
                 </button>
@@ -151,7 +154,7 @@ export function ContactSection() {
                       value={form?.name ?? ''}
                       onChange={handleChange}
                       placeholder="Ваше имя"
-                      className="w-full bg-secondary border border-border rounded-lg pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                      className="w-full bg-secondary border border-border rounded-lg pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-orange-500/30 transition-all"
                       required
                     />
                   </div>
@@ -167,7 +170,7 @@ export function ContactSection() {
                       value={form?.phone ?? ''}
                       onChange={handleChange}
                       placeholder="+375 (__) ___-__-__"
-                      className="w-full bg-secondary border border-border rounded-lg pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                      className="w-full bg-secondary border border-border rounded-lg pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-orange-500/30 transition-all"
                       required
                     />
                   </div>
@@ -183,7 +186,7 @@ export function ContactSection() {
                       value={form?.email ?? ''}
                       onChange={handleChange}
                       placeholder="email@example.com"
-                      className="w-full bg-secondary border border-border rounded-lg pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                      className="w-full bg-secondary border border-border rounded-lg pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-orange-500/30 transition-all"
                     />
                   </div>
                 </div>
@@ -198,7 +201,7 @@ export function ContactSection() {
                       onChange={handleChange}
                       placeholder="Опишите ваш вопрос или пожелание"
                       rows={4}
-                      className="w-full bg-secondary border border-border rounded-lg pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
+                      className="w-full bg-secondary border border-border rounded-lg pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-orange-500/30 transition-all resize-none"
                       required
                     />
                   </div>
@@ -207,7 +210,7 @@ export function ContactSection() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-primary text-primary-foreground py-3.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/25 disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full grad-bg text-white py-3.5 rounded-full text-sm font-semibold hover:opacity-90 transition-all hover:shadow-lg hover:shadow-orange-500/20 disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <><Loader2 className="w-4 h-4 animate-spin" /> Отправка...</>

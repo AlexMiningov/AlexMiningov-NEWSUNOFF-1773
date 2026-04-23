@@ -44,7 +44,7 @@ export function Header() {
         {/* CTA */}
         <a
           href="#booking"
-          className="hidden md:inline-flex items-center gap-2 bg-white text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-white/90 transition-colors"
+          className="hidden md:inline-flex items-center gap-2 grad-bg text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
         >
           Записаться
         </a>
@@ -76,7 +76,7 @@ export function Header() {
             <a
               href="#booking"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 inline-flex items-center justify-center bg-white text-black text-sm font-semibold px-5 py-3 rounded-full"
+              className="mt-2 inline-flex items-center justify-center grad-bg text-white text-sm font-semibold px-5 py-3 rounded-full"
             >
               Записаться
             </a>

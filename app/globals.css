@@ -13,8 +13,13 @@
     --popover: 0 0% 5%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 90 100% 45%;
+    --primary: 25 95% 53%;
     --primary-foreground: 0 0% 0%;
+
+    /* Logo gradient colors */
+    --grad-from: #FBBF24;
+    --grad-via: #F97316;
+    --grad-to: #7C3AED;
 
     --secondary: 0 0% 8%;
     --secondary-foreground: 0 0% 100%;
@@ -30,7 +35,9 @@
 
     --border: 0 0% 13%;
     --input: 0 0% 13%;
-    --ring: 90 100% 45%;
+    --ring: 25 95% 53%;
+    --brand-purple: 262 83% 58%;
+    --brand-orange: 25 95% 53%;
 
     --radius: 0.5rem;
     --radius-sm: calc(0.5rem - 4px);
@@ -73,6 +80,22 @@ html {
     @apply bg-black text-white;
     font-feature-settings: "ss01", "kern";
   }
+}
+
+/* Logo gradient utility */
+.grad-text {
+  background: linear-gradient(90deg, #FBBF24 0%, #F97316 45%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-bg {
+  background: linear-gradient(135deg, #F97316 0%, #7C3AED 100%);
+}
+
+.grad-border {
+  border-image: linear-gradient(135deg, #F97316, #7C3AED) 1;
 }
 
 /* Horizontal scroll carousel */

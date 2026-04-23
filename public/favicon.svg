@@ -1,7 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-  <rect width="256" height="256" rx="48" fill="#111111"/>
-  <!-- Square with bottom-right cut -->
-  <path d="M52 52 H204 V172 L152 204 H52 Z" fill="#66cc00"/>
-  <!-- Corner triangle darker -->
-  <path d="M152 204 L204 172 L152 172 Z" fill="#000000" fill-opacity="0.25"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sun" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="45%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </radialGradient>
+    <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#9333EA"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.4)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="8" y="36" width="48" height="20" rx="10" fill="url(#pill)"/>
+  <rect x="8" y="36" width="48" height="20" rx="10" fill="url(#shine)"/>
+  <rect x="14" y="38" width="36" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="32" cy="34" r="16" fill="url(#sun)" filter="url(#glow)"/>
 </svg>

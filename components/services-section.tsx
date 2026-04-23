@@ -19,7 +19,6 @@ export function ServicesSection() {
     <section id="services" ref={ref} className="bg-black py-32 px-6 sm:px-10">
       <div className="max-w-[1400px] mx-auto">
 
-        {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -30,7 +29,6 @@ export function ServicesSection() {
           <span className="text-white/30 text-sm hidden sm:block">Полный прайс-лист</span>
         </motion.div>
 
-        {/* Services list */}
         <div className="divide-y divide-white/8">
           {services.map((s, i) => (
             <motion.div
@@ -41,14 +39,13 @@ export function ServicesSection() {
               className="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-0 py-7 cursor-default hover:bg-white/[0.02] transition-colors px-2 -mx-2 rounded"
             >
               <span className="text-white/20 text-sm font-mono w-10 shrink-0">{s.num}</span>
-              <h3 className="text-xl sm:text-2xl font-semibold sm:w-72 shrink-0 group-hover:text-primary transition-colors">{s.name}</h3>
+              <h3 className="text-xl sm:text-2xl font-semibold sm:w-72 shrink-0 group-hover:grad-text transition-colors">{s.name}</h3>
               <p className="text-white/35 text-sm sm:flex-1 sm:px-8 leading-relaxed">{s.desc}</p>
-              <span className="text-primary font-bold text-lg shrink-0">{s.price}</span>
+              <span className="grad-text font-bold text-lg shrink-0">{s.price}</span>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
@@ -57,10 +54,10 @@ export function ServicesSection() {
         >
           <a
             href="#booking"
-            className="inline-flex items-center gap-3 border border-white/15 text-white text-sm font-semibold px-7 py-3.5 rounded-full hover:border-white/40 transition-colors"
+            className="inline-flex items-center gap-3 grad-bg text-white text-sm font-semibold px-7 py-3.5 rounded-full hover:opacity-90 transition-opacity"
           >
             Записаться на услугу
-            <span className="text-white/30">→</span>
+            <span className="opacity-70">→</span>
           </a>
         </motion.div>
       </div>

@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const tagline = 'Тонировка, которая'
@@ -37,7 +36,13 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.15 + i * 0.12 }}
-              className={`block text-[13vw] sm:text-[11vw] lg:text-[9.5vw] ${i < headingWords.length - 1 ? 'text-white/25' : 'text-white'}`}
+              className={`block text-[13vw] sm:text-[11vw] lg:text-[9.5vw] ${
+                i === headingWords.length - 1
+                  ? 'grad-text'
+                  : i === headingWords.length - 2
+                  ? 'text-white/50'
+                  : 'text-white/25'
+              }`}
             >
               {word}
             </motion.span>
@@ -55,7 +60,7 @@ export function HeroSection() {
         <div className="flex items-center gap-4">
           <a
             href="#booking"
-            className="bg-white text-black font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-white/90 transition-colors"
+            className="grad-bg text-white font-semibold text-sm px-7 py-3.5 rounded-full hover:opacity-90 transition-opacity"
           >
             Записаться
           </a>
@@ -69,15 +74,15 @@ export function HeroSection() {
 
         <div className="flex gap-10 text-white/35 text-sm">
           <div>
-            <span className="block text-2xl font-bold text-white">5+</span>
+            <span className="block text-2xl font-bold grad-text">5+</span>
             лет на рынке
           </div>
           <div>
-            <span className="block text-2xl font-bold text-white">1200+</span>
+            <span className="block text-2xl font-bold grad-text">1200+</span>
             авто в год
           </div>
           <div>
-            <span className="block text-2xl font-bold text-white">5 лет</span>
+            <span className="block text-2xl font-bold grad-text">5 лет</span>
             гарантия
           </div>
         </div>
