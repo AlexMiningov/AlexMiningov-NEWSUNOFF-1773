@@ -9,14 +9,23 @@ const jakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-di
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'] as any, variable: '--font-mono' })
 
 export const metadata: Metadata = {
-  title: 'Sunoff — Профессиональная тонировка автомобилей в Минске',
+  metadataBase: new URL('https://alex-miningov-newsunoff-1773-choe.vercel.app'),
+  title: 'Sunoff Garage — Профессиональная тонировка автомобилей в Минске',
   description: 'Sunoff Garage — студия тонировки автомобилей в Минске. Тонирование стёкол, бронирование плёнкой, растонировка. Качественные материалы, гарантия на работы.',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
   },
   openGraph: {
-    title: 'Sunoff — Профессиональная тонировка автомобилей в Минске',
+    title: 'Sunoff Garage — Тонировка автомобилей в Минске',
+    description: 'Студия тонировки автомобилей в Минске. Тонирование стёкол, бронирование, растонировка. Гарантия на все работы.',
+    images: [{ url: '/og-image.png', width: 1376, height: 768, alt: 'Sunoff Garage' }],
+    type: 'website',
+    locale: 'ru_RU',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sunoff Garage — Тонировка автомобилей в Минске',
     description: 'Студия тонировки автомобилей в Минске. Тонирование стёкол, бронирование, растонировка.',
     images: ['/og-image.png'],
   },
