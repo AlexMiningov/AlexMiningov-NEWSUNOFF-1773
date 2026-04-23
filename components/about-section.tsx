@@ -31,7 +31,7 @@ export function AboutSection() {
           </div>
           <div>
             <p className="text-white text-base font-semibold mb-1">Расположение</p>
-            <p>пер. Тепличный 26а, Минск<br />Пн–Сб: 9:00 — 20:00</p>
+            <p>пер. Тепличный 21а, Минск<br />Пн–Сб: 9:00 — 20:00</p>
           </div>
           <div>
             <p className="text-white text-base font-semibold mb-1">Контакт</p>

@@ -96,7 +96,7 @@ export function BookingSection() {
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-white/20 text-xs uppercase tracking-widest">Адрес</span>
-                <span className="text-white text-base font-medium">пер. Тепличный 26а, Минск</span>
+                <span className="text-white text-base font-medium">пер. Тепличный 21а, Минск</span>
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-white/20 text-xs uppercase tracking-widest">Режим работы</span>

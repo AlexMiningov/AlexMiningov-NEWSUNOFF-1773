@@ -54,7 +54,7 @@ export function ContactSection() {
   }
 
   const contactInfo = [
-    { icon: MapPin, label: 'Адрес', value: 'пер. Тепличный 26а, Минск' },
+    { icon: MapPin, label: 'Адрес', value: 'пер. Тепличный 21а, Минск' },
     { icon: Phone, label: 'Телефон', value: '+375 29 888-89-55', href: 'tel:+375298888955' },
     { icon: Mail, label: 'Email', value: 'i@sunoff.by', href: 'mailto:i@sunoff.by' },
     { icon: Clock, label: 'Режим работы', value: 'Пн-Сб: 9:00 — 20:00' },
