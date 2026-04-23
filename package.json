@@ -5,11 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
-  },
-  "prisma": {
-    "seed": "tsx --require dotenv/config scripts/safe-seed.ts"
+    "lint": "next lint"
   },
   "devDependencies": {
     "@next/swc-wasm-nodejs": "13.5.1",
